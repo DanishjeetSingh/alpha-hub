@@ -5,7 +5,7 @@ Unofficial alphaXiv-powered CLI and library for research agents.
 ## Install
 
 ```bash
-npm install -g @companion-ai/alpha-hub
+npm install -g @danishjeetsingh/alpha-hub
 ```
 
 ## Quick Start
@@ -25,7 +25,7 @@ This package exposes:
 
 - `alpha` CLI
 - `alpha-mcp` CLI
-- library helpers from `@companion-ai/alpha-hub/lib`
+- library helpers from `@danishjeetsingh/alpha-hub/lib`
 
 Repository:
-https://github.com/getcompanion-ai/alpha-hub
+https://github.com/DanishjeetSingh/alpha-hub

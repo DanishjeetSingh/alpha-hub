@@ -1,16 +1,16 @@
 {
-  "name": "@companion-ai/alpha-hub",
+  "name": "@danishjeetsingh/alpha-hub",
   "version": "0.1.3",
   "description": "Unofficial alphaXiv-powered CLI and library for research agents",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/getcompanion-ai/alpha-hub.git",
+    "url": "git+https://github.com/DanishjeetSingh/alpha-hub.git",
     "directory": "cli"
   },
-  "homepage": "https://github.com/getcompanion-ai/alpha-hub#readme",
+  "homepage": "https://github.com/DanishjeetSingh/alpha-hub#readme",
   "bugs": {
-    "url": "https://github.com/getcompanion-ai/alpha-hub/issues"
+    "url": "https://github.com/DanishjeetSingh/alpha-hub/issues"
   },
   "exports": {
     ".": "./src/index.js",

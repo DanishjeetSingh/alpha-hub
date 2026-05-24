@@ -8,7 +8,7 @@ Research agents hallucinate paper details and forget what they learn in a sessio
 ## Quick Start
 
 ```bash
-npm install -g @companion-ai/alpha-hub
+npm install -g @danishjeetsingh/alpha-hub
 alpha login                        # sign in with alphaXiv
 alpha status                       # show whether alphaXiv auth is present
 alpha search "attention mechanism" # search papers
