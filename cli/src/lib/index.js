@@ -61,6 +61,7 @@ function cleanSearchField(value) {
 
 export function parsePaperSearchResults(text, options = {}) {
   const includeRaw = options.includeRaw === true;
+  const limit = Number.isInteger(options.limit) && options.limit > 0 ? options.limit : null;
   if (typeof text !== 'string') {
     return { results: [] };
   }
@@ -68,7 +69,8 @@ export function parsePaperSearchResults(text, options = {}) {
   const blocks = text
     .split(/\n(?=\d+\.\s+\*\*)/g)
     .map((block) => block.trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .slice(0, limit ?? undefined);
 
   const results = blocks.map((block, index) => {
     const lines = block.split('\n').map((line) => line.trim()).filter(Boolean);

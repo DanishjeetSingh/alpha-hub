@@ -20,7 +20,7 @@ export declare function agenticSearch(query: string): Promise<unknown>;
 
 export declare function parsePaperSearchResults(
 	text: unknown,
-	options?: { includeRaw?: boolean },
+	options?: { includeRaw?: boolean; limit?: number },
 ): {
 	results: unknown[];
 	raw?: unknown;
@@ -29,7 +29,7 @@ export declare function parsePaperSearchResults(
 export declare function searchPapers(
 	query: string,
 	mode?: "semantic" | "keyword" | "both" | "agentic" | "all" | string,
-	options?: { includeRaw?: boolean },
+	options?: { includeRaw?: boolean; limit?: number },
 ): Promise<unknown>;
 
 export declare function getPaper(
