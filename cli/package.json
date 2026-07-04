@@ -27,8 +27,8 @@
     "./lib/papers": "./src/lib/papers.js"
   },
   "bin": {
-    "alpha": "./bin/alpha",
-    "alpha-mcp": "./bin/alpha-mcp"
+    "alpha": "bin/alpha",
+    "alpha-mcp": "bin/alpha-mcp"
   },
   "files": [
     "README.md",
