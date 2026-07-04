@@ -2,6 +2,8 @@
 
 Unofficial alphaXiv-powered CLI and library for research agents.
 
+Npm package: [`@danishjeetsingh/alpha-hub`](https://www.npmjs.com/package/@danishjeetsingh/alpha-hub)
+
 ## Install
 
 ```bash

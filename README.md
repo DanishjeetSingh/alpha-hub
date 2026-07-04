@@ -4,6 +4,9 @@ Research agents hallucinate paper details and forget what they learn in a sessio
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
+[![npm](https://img.shields.io/npm/v/@danishjeetsingh/alpha-hub.svg)](https://www.npmjs.com/package/@danishjeetsingh/alpha-hub)
+
+Published on npm as [`@danishjeetsingh/alpha-hub`](https://www.npmjs.com/package/@danishjeetsingh/alpha-hub).
 
 ## Quick Start
 
