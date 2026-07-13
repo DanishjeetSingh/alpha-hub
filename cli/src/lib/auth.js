@@ -7,15 +7,16 @@ import { execSync } from 'node:child_process';
 import { platform } from 'node:os';
 import { createInterface } from 'node:readline/promises';
 
-const CLERK_ISSUER = 'https://clerk.alphaxiv.org';
-const AUTH_ENDPOINT = `${CLERK_ISSUER}/oauth/authorize`;
-const TOKEN_ENDPOINT = `${CLERK_ISSUER}/oauth/token`;
-const REGISTER_ENDPOINT = `${CLERK_ISSUER}/oauth/register`;
+const AUTH_ISSUER = 'https://api.alphaxiv.org/auth';
+const AUTH_RESOURCE = 'https://api.alphaxiv.org/mcp/v1';
+const AUTH_ENDPOINT = `${AUTH_ISSUER}/oauth2/authorize`;
+const TOKEN_ENDPOINT = `${AUTH_ISSUER}/oauth2/token`;
+const REGISTER_ENDPOINT = `${AUTH_ISSUER}/oauth2/register`;
 const CALLBACK_PORT = 9876;
 const CALLBACK_PATH = '/callback';
 const REDIRECT_URI = `http://127.0.0.1:${CALLBACK_PORT}${CALLBACK_PATH}`;
-const USERINFO_ENDPOINT = `${CLERK_ISSUER}/oauth/userinfo`;
-const SCOPES = 'profile email offline_access';
+const USERINFO_ENDPOINT = `${AUTH_ISSUER}/oauth2/userinfo`;
+const SCOPES = 'openid profile email offline_access';
 
 function getAuthPath() {
   const dir = join(homedir(), '.ahub');
@@ -100,6 +101,7 @@ function buildAuthUrl(clientId, challenge, state) {
   authUrl.searchParams.set('code_challenge', challenge);
   authUrl.searchParams.set('code_challenge_method', 'S256');
   authUrl.searchParams.set('state', state);
+  authUrl.searchParams.set('resource', AUTH_RESOURCE);
   return authUrl;
 }
 
@@ -276,6 +278,7 @@ async function exchangeCode(code, clientId, codeVerifier) {
     redirect_uri: REDIRECT_URI,
     client_id: clientId,
     code_verifier: codeVerifier,
+    resource: AUTH_RESOURCE,
   });
 
   const res = await fetch(TOKEN_ENDPOINT, {
@@ -300,13 +303,19 @@ export async function refreshAccessToken() {
     grant_type: 'refresh_token',
     refresh_token: auth.refresh_token,
     client_id: auth.client_id,
+    resource: AUTH_RESOURCE,
   });
 
-  const res = await fetch(TOKEN_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: body.toString(),
-  });
+  let res;
+  try {
+    res = await fetch(TOKEN_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+    });
+  } catch {
+    return null;
+  }
 
   if (!res.ok) return null;
 

@@ -1,6 +1,6 @@
 {
   "name": "@danishjeetsingh/alpha-hub",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Unofficial alphaXiv-powered CLI and library for research agents",
   "type": "module",
   "repository": {
